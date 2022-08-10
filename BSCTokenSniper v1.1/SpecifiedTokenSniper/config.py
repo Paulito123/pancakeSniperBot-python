@@ -1,0 +1,20 @@
+class Config:
+    walletAddress = "Enter wallet address here"
+    walletPrivateKey = "Enter private key here"
+    pancakeSwapRouterAddress = "0x10ED43C718714eb63d5aA57B78B54704E256024E"
+    pancakeSwapFactoryAddress = "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73"
+    amountToSpendPerSnipe = 0.00025
+    transactionRevertTimeSeconds = 10000
+    gasAmount = 300000
+    gasPrice = 5
+    bscScanAPIKey = "Enter bscScan API key here"
+    observeOnly = False
+    checkSourceCode = True
+    checkValidPancakeV2 = True
+    checkMintFunction = True
+    checkHoneypot = True
+    checkPancakeV1Router = True
+    checkForTest = True
+    liquidityPairAddress = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
+    chain_url = "https://bsc-dataseed.binance.org/"
+    wbnbContractAddress = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"

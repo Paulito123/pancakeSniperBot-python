@@ -122,8 +122,8 @@ except:
 
 enableMiniAudit = False
 
-if checkSourceCode == "True" and (checkValidPancakeV2 == "True" or checkMintFunction == "True" or checkHoneypot == "True" or checkPancakeV1Router == "True" or checkForTest == "True"):
-    enableMiniAudit = True
+# if checkSourceCode == "True" and (checkValidPancakeV2 == "True" or checkMintFunction == "True" or checkHoneypot == "True" or checkPancakeV1Router == "True" or checkForTest == "True"):
+#     enableMiniAudit = True
 
 def updateTitle():
     walletBalance = web3.fromWei(web3.eth.get_balance(walletAddress),'ether') #There are references to ether in the code but it's set to BNB, its just how Web3 was originally designed
@@ -169,16 +169,18 @@ def Buy(tokenAddress, tokenSymbol):
             nonce = web3.eth.get_transaction_count(walletAddress)
             start = time.time()
             pancakeswap2_txn = contract.functions.swapExactETHForTokens(
-            0, # Set to 0 or specify min number of tokens - setting to 0 just buys X amount of tokens for whatever BNB specified
-            [spend,tokenToBuy],
-            walletAddress,
-            (int(time.time()) + transactionRevertTime)
+                # Set to 0 or specify min number of tokens - setting to 0 just buys X amount of tokens for whatever BNB specified
+                0,
+                [spend, tokenToBuy],
+                walletAddress,
+                (int(time.time()) + transactionRevertTime)
             ).buildTransaction({
-            'from': walletAddress,
-            'value': web3.toWei(float(snipeBNBAmount), 'ether'), #This is the Token(BNB) amount you want to Swap from
-            'gas': gasAmount,
-            'gasPrice': web3.toWei(gasPrice,'gwei'),
-            'nonce': nonce,
+                'from': walletAddress,
+                # This is the Token(BNB) amount you want to Swap from
+                'value': web3.toWei(float(snipeBNBAmount), 'ether'),
+                'gas': gasAmount,
+                'gasPrice': web3.toWei(gasPrice, 'gwei'),
+                'nonce': nonce,
             })
 
             try:               
@@ -264,7 +266,7 @@ def foundToken(event):
 
             #-----------------------GET LIQUIDITY AMOUNT-------------------------------
             
-            if (tokenAddress = targetContractAddress):
+            if (tokenAddress == targetContractAddress):
                 Buy(tokenAddress, tokenSymbol)
                     
        
